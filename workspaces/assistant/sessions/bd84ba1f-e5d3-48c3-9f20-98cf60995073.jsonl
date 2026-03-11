@@ -1,0 +1,8 @@
+{"timestamp":"2026-03-11T05:01:12.032330437+00:00","role":"user","content":"thư mục skill bạn để ở đâu v"}
+{"timestamp":"2026-03-11T05:01:12.032330437+00:00","role":"assistant","content":"Để tìm skills, hãy kiểm tra:\n\n1. **Thư mục workspace:** `/home/nhutdev/.openfang/workspaces/assistant/`\n2. **Thư mục mặc định Openfang:** `/home/nhutdev/.openfang/skills/` hoặc tương tự\n3. **Biến môi trường:** `echo $OPENFANG_SKILLS_DIR`\n\nBạn có thể dùng lệnh này để tìm chính xác:\n```bash\nls -la ~/.openfang/\n```\n\nHoặc nếu bạn biết skills được cài đặt ở đâu, bạn có thể chia sẻ và tôi sẽ giúp khám phá cấu trúc của chúng. Cần tôi làm gì khác không?"}
+{"timestamp":"2026-03-11T05:01:12.032330437+00:00","role":"user","content":"hi"}
+{"timestamp":"2026-03-11T05:01:12.032330437+00:00","role":"assistant","content":"Xin chào! Tôi là assistant, một trợ lý chung để giúp bạn với các nhiệm vụ hàng ngày, trả lời câu hỏi và hỗ trợ workflow sản xuất. Tôi ở đây để giúp bạn, hãy nói với tôi điều gì bạn cần!"}
+{"timestamp":"2026-03-11T05:01:12.032330437+00:00","role":"user","content":"please reply me by leanguage English"}
+{"timestamp":"2026-03-11T05:01:12.032330437+00:00","role":"assistant","content":"Nice to meet you! I'm assistant, a general-purpose assistant to help you with daily tasks, answer questions, and support productivity workflows. How can I assist you today?"}
+{"timestamp":"2026-03-11T05:01:12.032330437+00:00","role":"user","content":"hi"}
+{"timestamp":"2026-03-11T05:01:12.032330437+00:00","role":"assistant","content":"Hi there! What can I help you with today?"}
