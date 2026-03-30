@@ -1,4 +1,4 @@
-name = "researcher"
+name = "researcher-new"
 version = "0.1.0"
 description = "Research agent. Fetches web content and synthesizes information."
 author = "openfang"
@@ -6,45 +6,56 @@ module = "builtin:chat"
 tags = ["research", "analysis", "web"]
 
 [model]
-provider = "default"
-model = "default"
-api_key_env = "GEMINI_API_KEY"
+provider = "openai"
+model = "models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf"
+base_url = "http://localhost:8080/v1"
+api_key = "not-needed"
 max_tokens = 4096
 temperature = 0.5
-system_prompt = """You are Researcher, an information-gathering and synthesis agent running inside the OpenFang Agent OS.
+system_prompt = """
+You are Researcher, an information-gathering agent running inside OpenFang.
 
-RESEARCH METHODOLOGY:
-1. DECOMPOSE — Break the research question into specific sub-questions.
-2. SEARCH — Use web_search to find relevant sources. Use multiple queries with different phrasings.
-3. DEEP DIVE — Use web_fetch to read promising sources in full. Don't stop at search snippets.
-4. CROSS-REFERENCE — Compare information across sources. Note agreements and contradictions.
-5. SYNTHESIZE — Combine findings into a clear, structured report.
+GOAL
+Provide clear, factual answers using reliable sources when needed.
 
-SOURCE EVALUATION:
-- Prefer primary sources (official docs, papers, original reports) over secondary.
-- Note publication dates — flag if information may be outdated.
-- Distinguish facts from opinions and speculation.
-- When sources conflict, present both views with evidence.
+METHOD
+1. Break the question into smaller sub-questions.
+2. Use web_search when external information is required.
+3. Use web_fetch to read important sources.
+4. Compare multiple sources before concluding.
 
-OUTPUT:
-- Lead with the direct answer to the question.
-- Key Findings (numbered, with source attribution).
-- Sources Used (with URLs).
-- Confidence Level (high / medium / low) and why.
-- Open Questions (what couldn't be determined).
+RULES
+- Prefer official documentation and primary sources.
+- If sources conflict, explain both sides.
+- If information is uncertain, say so.
 
-Always cite your sources. Never present uncertain information as fact."""
+OUTPUT FORMAT
+Answer the question first, then provide:
+
+Key Findings:
+- point 1
+- point 2
+
+Sources:
+- URL
+
+Confidence:
+high / medium / low
+"""
+
 
 [[fallback_models]]
-provider = "default"
-model = "default"
-api_key_env = "GROQ_API_KEY"
-
+provider = "openai"
+model = "models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf"
+base_url = "http://localhost:8080/v1"
+api_key = "not-needed"
 [resources]
 max_llm_tokens_per_hour = 150000
 
 [capabilities]
-tools = ["web_search", "web_fetch", "file_read", "file_write", "file_list", "memory_store", "memory_recall"]
+tools = ["web_search","create_pull_request", "shell_exec","file_read","agent_send", "agent_list", "file_write", "memory_store", "memory_recall"]
 network = ["*"]
 memory_read = ["*"]
 memory_write = ["self.*", "shared.*"]
+shell = ["npx *", "cargo clippy *", "cargo fmt *", "git diff *", "git log *", "cat *", "ls *","git *"]
+filesystem = ["/home/nhutdev"]

@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "job": {
+      "id": "8c0217e0-c7b5-4878-ac52-7c8d0bc253c7",
+      "agent_id": "ac5fa8d3-d6ea-4069-915a-1b264b64b78d",
+      "name": "every-hour-greeting",
+      "enabled": false,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 * * * *",
+        "tz": null
+      },
+      "action": {
+        "kind": "agent_turn",
+        "message": "hi",
+        "model_override": null,
+        "timeout_secs": null
+      },
+      "delivery": {
+        "kind": "last_channel"
+      },
+      "created_at": "2026-03-17T01:45:33.724645456Z",
+      "last_run": "2026-03-19T04:00:11.173345984Z",
+      "next_run": "2026-03-19T05:00:00Z"
+    },
+    "one_shot": false,
+    "last_status": "error: LLM driver error: Auth error: Claude Code CLI is not authenticated. Run: claude auth\nDetail: {\"type\":\"result\",\"subtype\":\"success\",\"is_error\":true,\"duration_ms\":596,\"duration_api_ms\":0,\"num_turns\":1,\"result\":\"Failed to authentic...",
+    "consecutive_errors": 5
+  }
+]

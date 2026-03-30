@@ -1,12 +1,41 @@
-# OpenFang Agent OS configuration
-# See https://github.com/RightNow-AI/openfang for documentation
-
 api_listen = "0.0.0.0:4200"
+
+[approval]
+require_approval = false
+
+[channels.telegram]
+bot_token_env = "TELEGRAM_BOT_TOKEN"
+default_agent = "assistant-opt"
+
+[default_model]
+provider = "groq"
+model = "llama-3.3-70b-versatile"
+api_key_env = "GROQ_API_KEY"
+
+[exec_policy]
+allowed_paths = ["/home/nhutdev"]
+mode = "full"
 
 [memory]
 decay_rate = 0.05
 
-[default_model]
-provider = "openai"
-model = "gpt-4o"
-api_key_env = "OPENAI_API_KEY"
+[sandbox]
+interactive_approval = false
+network_auto_approve = true
+shell_auto_approve = true
+
+[agents]
+tool_timeout_secs = 600
+
+[tools]
+timeout_secs = 600
+
+[[mcp_servers]]
+name = "github"
+timeout_secs = 30
+env = ["GITHUB_PERSONAL_ACCESS_TOKEN"]
+
+[mcp_servers.transport]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-github"]
